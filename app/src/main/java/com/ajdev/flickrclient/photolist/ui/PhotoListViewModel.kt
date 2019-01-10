@@ -5,14 +5,28 @@ import androidx.paging.PagedList
 import com.ajdev.flickrclient.flickr.FlickrInteractor
 import com.ajdev.flickrclient.flickr.data.model.FlickrPhoto
 import io.reactivex.Flowable
+import io.reactivex.disposables.CompositeDisposable
 
-class PhotoListViewModel(private val flickrInteractor: FlickrInteractor) : ViewModel() {
+class PhotoListViewModel(flickrInteractor: FlickrInteractor) : ViewModel() {
 
-    fun getRecentPhotos(): Flowable<PagedList<FlickrPhoto>> =
-        flickrInteractor.getRecentPhotos(pageSize = PAGE_SIZE, prefetchDistance = PREFETCH_DISTANCE)
+    val recentPhotos: Flowable<PagedList<FlickrPhoto>> =
+        flickrInteractor
+            .getRecentPhotos(
+                pageSize = PAGE_SIZE,
+                prefetchDistance = PREFETCH_DISTANCE
+            )
+            .replay(1)
+            .autoConnect(0, { compositeDisposable::add })
+
+    private val compositeDisposable = CompositeDisposable()
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
+    }
 
     companion object {
-        private const val PAGE_SIZE = 40
-        private const val PREFETCH_DISTANCE = 40
+        private const val PAGE_SIZE = 100
+        private const val PREFETCH_DISTANCE = 100
     }
 }

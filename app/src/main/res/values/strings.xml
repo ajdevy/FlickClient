@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FlickClient</string>
+
+    <!--non-translatable strings-->
+    <string name="photoUrl" translatable="false">ARGUMENT_PHOTO_URL</string>
+    <string name="photoTitle" translatable="false">ARGUMENT_PHOTO_TITLE</string>
 </resources>

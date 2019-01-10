@@ -19,7 +19,7 @@ interface FlickrGateway {
     ): Single<FlickrPhotosResponse>
 
     companion object {
-        val HOST_URL: String = "https://api.flickr.com/services/"
-        val FIRST_PAGE: Int = 1
+        const val HOST_URL: String = "https://api.flickr.com/services/"
+        const val FIRST_PAGE: Int = 1
     }
 }

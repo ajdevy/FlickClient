@@ -12,6 +12,8 @@ buildscript {
 
         retrofitVersion = '2.5.0'
         okHttpVersion = '3.12.0'
+
+        autodisposeVersion = '1.1.0'
     }
 
     repositories {

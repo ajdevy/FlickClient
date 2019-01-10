@@ -15,23 +15,25 @@ object PhotoDetailsInjectionModule {
 
     val module = Kodein.Module(PhotoDetailsInjectionModule.javaClass.name) {
 
-        bind<PhotoDetailsViewModel>() with factory { fragment: Fragment ->
+        bind<PhotoDetailsViewModel>() with factory { fragment: Fragment, photoTitle: String, photoUrl: String ->
             ViewModelProviders
                 .of(
                     fragment,
-                    PhotoDetailsViewModelProviderFactory(instance())
+                    PhotoDetailsViewModelProviderFactory(instance(), photoTitle, photoUrl)
                 )
                 .get(PhotoDetailsViewModel::class.java)
         }
     }
 
     internal class PhotoDetailsViewModelProviderFactory(
-        private val flickrInteractor: FlickrInteractor
+        private val flickrInteractor: FlickrInteractor,
+        private val photoTitle: String,
+        private val photoUrl: String
     ) : ViewModelProvider.Factory {
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
-            return PhotoDetailsViewModel(flickrInteractor) as T
+            return PhotoDetailsViewModel(photoTitle, photoUrl, flickrInteractor) as T
         }
     }
 }

@@ -7,20 +7,25 @@
 	<fragment android:id="@+id/photoListFragment"
 			  android:name="com.ajdev.flickrclient.photolist.ui.PhotoListFragment"
 			  android:label="photo_list_fragment"
-			  tools:layout="@layout/photo_list_fragment">
+			  tools:layout="@layout/fragment_photo_list">
 
 		<action android:id="@+id/action_photoListFragment_to_photoDetailsFragment"
 				app:destination="@id/photoDetailsFragment"
-				app:enterAnim="@anim/slide_in_right"
-				app:exitAnim="@anim/slide_out_left"
-				app:popEnterAnim="@anim/slide_in_left"
-				app:popExitAnim="@anim/slide_out_right"/>
+				app:enterAnim="@animator/slide_in_right"
+				app:exitAnim="@animator/slide_out_left"
+				app:popEnterAnim="@animator/slide_in_left"
+				app:popExitAnim="@animator/slide_out_right"/>
 
 	</fragment>
 
 	<fragment android:id="@+id/photoDetailsFragment"
 			  android:name="com.ajdev.flickrclient.photodetails.ui.PhotoDetailsFragment"
 			  android:label="photo_details_fragment"
-			  tools:layout="@layout/photo_details_fragment"/>
+			  tools:layout="@layout/fragment_photo_details">
+
+		<argument android:name="@string/photoUrl" app:argType="string"/>
+		<argument android:name="@string/photoTitle" app:argType="string"/>
+
+	</fragment>
 
 </navigation>

@@ -68,6 +68,6 @@ class FlickrPagedDataSource(
             // Parameterless searches have been disabled. Please use flickr.photos.getRecent instead
             flickrGateway.getRecent(pageNumber)
         } else {
-            flickrGateway.search(FlickrGateway.FIRST_PAGE, searchText)
+            flickrGateway.search(pageNumber, searchText)
         }
 }
