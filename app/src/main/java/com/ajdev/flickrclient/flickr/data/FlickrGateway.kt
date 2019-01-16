@@ -9,13 +9,15 @@ interface FlickrGateway {
 
     @GET("rest?method=flickr.photos.getRecent")
     fun getRecent(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("safe_search") safeSearch: Int = 1
     ): Single<FlickrPhotosResponse>
 
     @GET("rest?method=flickr.photos.search")
     fun search(
         @Query("page") page: Int,
-        @Query("text") query: String
+        @Query("text") query: String,
+        @Query("safe_search") safeSearch: Int = 1
     ): Single<FlickrPhotosResponse>
 
     companion object {

@@ -9,6 +9,9 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.conf.ConfigurableKodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.singleton
+import timber.log.Timber
+import timber.log.Timber.DebugTree
+
 
 class App : Application(), KodeinAware {
 
@@ -17,7 +20,13 @@ class App : Application(), KodeinAware {
     override fun onCreate() {
         super.onCreate()
 
+        setupTimber()
+
         setupDependencyInjection()
+    }
+
+    private fun setupTimber() {
+        Timber.plant(DebugTree())
     }
 
     private fun setupDependencyInjection() {

@@ -23,8 +23,8 @@
 			  android:label="photo_details_fragment"
 			  tools:layout="@layout/fragment_photo_details">
 
-		<argument android:name="@string/photoUrl" app:argType="string"/>
-		<argument android:name="@string/photoTitle" app:argType="string"/>
+		<argument android:name="flickrPhoto"
+				  app:argType="com.ajdev.flickrclient.flickr.data.model.FlickrPhoto"/>
 
 	</fragment>
 

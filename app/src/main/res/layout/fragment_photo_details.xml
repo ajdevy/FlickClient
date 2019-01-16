@@ -8,6 +8,14 @@
 		android:layout_height="match_parent"
 		tools:context=".photodetails.ui.PhotoDetailsFragment">
 
+	<ImageView
+			android:id="@+id/photoDetailsImageView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			tools:src="@drawable/ic_launcher_background"
+			android:scaleType="centerCrop"
+			tools:ignore="ContentDescription"/>
+
 	<androidx.constraintlayout.widget.Guideline
 			android:id="@+id/alignToPhotoDetailsBottomGuideline"
 			android:layout_width="wrap_content"
@@ -16,9 +24,14 @@
 			app:layout_constraintGuide_percent="1"/>
 
 	<TextView
+			android:background="#AC000000"
+			android:textColor="@android:color/white"
+			android:paddingStart="10dp"
+			android:paddingEnd="10dp"
 			tools:text="Photo name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:ellipsize="end"
 			android:id="@+id/photoDetailsTitleTextView"
 			app:layout_constraintBottom_toTopOf="@+id/alignToPhotoDetailsBottomGuideline"
 			app:layout_constraintStart_toStartOf="parent"

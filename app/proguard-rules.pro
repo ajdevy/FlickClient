@@ -20,4 +20,13 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+# android x
 -keep class androidx.core.app.CoreComponentFactory { *; }
+
+# glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
